@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DefiniteIntegralCalculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="955.355" Width="1422.586">
-    <Grid>
+        Title="MainWindow" Height="1000" Width="1500">
+    <Grid Name="grid">
 
     </Grid>
 </Window>
