@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
@@ -63,6 +65,24 @@ namespace DefiniteIntegralCalculator
 
                 grid.Children.Add(path);
             }
+
+            var label = new Label()
+            {
+                Content = $"Integral value: {sum}",
+                Foreground = Brushes.White,
+                FontSize = 20,
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness()
+                {
+                    Left = Width / 4,
+                    Top = Width / 2,
+                    Right = 0,
+                    Bottom = 0,
+                },
+            };
+
+            grid.Children.Add(label);
         }
 
         private void DrawFunction(MathFunction function)
