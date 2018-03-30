@@ -46,7 +46,7 @@ namespace DefiniteIntegralCalculator
         private void DrawAndCalculateIntegral(MathFunction function, double xStart, double xEnd)
         {
             // integral value
-            double sum = 0;
+            double sum = 0; 
 
             for (double x = xIntegralStart; x < xIntegralEnd; x += xIntegralDelta)
             {
