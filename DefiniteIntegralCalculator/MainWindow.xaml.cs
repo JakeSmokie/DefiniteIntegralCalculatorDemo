@@ -15,16 +15,22 @@ namespace DefiniteIntegralCalculator
 {
     public partial class MainWindow : Window
     {
+        // render parameters
         private const double renderDeltaX = 0.05;
         private const double xScale = 150;
         private const double yScale = 75;
         private const double markWidth = 5;
         private const int marksCount = 20;
 
+        // integral parameters
+        // a
         private const double xIntegralStart = 0.5 * Math.PI;
+        // b
         private const double xIntegralEnd = 1.5 * Math.PI;
+        // dXi
         private const double xIntegralDelta = (xIntegralEnd - xIntegralStart) / 1000;
-
+        
+        // Function to compute integral 
         private delegate double MathFunction(double x);
         private MathFunction function = (x) => Math.Sqrt(1 + 36 * Math.Pow(Math.Sin(2 * x), 2));
 
@@ -39,10 +45,12 @@ namespace DefiniteIntegralCalculator
 
         private void DrawAndCalculateIntegral(MathFunction function, double xStart, double xEnd)
         {
+            // integral value
             double sum = 0;
 
             for (double x = xIntegralStart; x < xIntegralEnd; x += xIntegralDelta)
             {
+                // f(e)
                 var y = function(x);
                 sum += y * xIntegralDelta;
 
