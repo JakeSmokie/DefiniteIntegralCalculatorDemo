@@ -18,21 +18,21 @@ namespace DefiniteIntegralCalculator
         private const double renderDeltaX = 0.05;
         private const double xScale = 150;
         private const double yScale = 75;
+        private const double markWidth = 5;
         private const int marksCount = 20;
-        private const int markWidth = 5;
 
         private const double xIntegralStart = 0.5 * Math.PI;
         private const double xIntegralEnd = 1.5 * Math.PI;
         private const double xIntegralDelta = (xIntegralEnd - xIntegralStart) / 1000;
 
         private delegate double MathFunction(double x);
+        private MathFunction function = (x) => Math.Sqrt(1 + 36 * Math.Pow(Math.Sin(2 * x), 2));
 
         public MainWindow()
         {
             InitializeComponent();
             DrawAxis();
 
-            MathFunction function = (x) => Math.Sqrt(1 + 36 * Math.Pow(Math.Sin(2 * x), 2));
             DrawFunction(function);
             DrawAndCalculateIntegral(function, xIntegralStart, xIntegralEnd);
         }
