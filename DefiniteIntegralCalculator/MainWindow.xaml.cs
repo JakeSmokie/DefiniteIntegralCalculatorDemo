@@ -24,12 +24,15 @@ namespace DefiniteIntegralCalculator
 
         // integral parameters
         // a
-        private const double xIntegralStart = 0.5 * Math.PI;
+        private const double integralStart = 0.5 * Math.PI;
         // b
-        private const double xIntegralEnd = 1.5 * Math.PI;
+        private const double integralEnd = 1.5 * Math.PI;
+        // n
+        private const int integralPartsAmount = 100;
         // dXi
-        private const double xIntegralDelta = (xIntegralEnd - xIntegralStart) / 1000;
+        private const double integralDelta = (integralEnd - integralStart) / integralPartsAmount;
         
+
         // Function to compute integral 
         private delegate double MathFunction(double x);
         private MathFunction function = (x) => Math.Sqrt(1 + 36 * Math.Pow(Math.Sin(2 * x), 2));
@@ -40,25 +43,25 @@ namespace DefiniteIntegralCalculator
             DrawAxis();
 
             DrawFunction(function);
-            DrawAndCalculateIntegral(function, xIntegralStart, xIntegralEnd);
+            DrawAndCalculateIntegral(function);
         }
 
-        private void DrawAndCalculateIntegral(MathFunction function, double xStart, double xEnd)
+        private void DrawAndCalculateIntegral(MathFunction function)
         {
-            // integral value
+            // integral value+
             double sum = 0; 
 
-            for (double x = xIntegralStart; x < xIntegralEnd; x += xIntegralDelta)
+            for (double x = integralStart; x < integralEnd; x += integralDelta)
             {
                 // f(e)
                 var y = function(x);
-                sum += y * xIntegralDelta;
+                sum += y * integralDelta;
 
                 var rectGeometry = new RectangleGeometry(
                     new Rect(
-                        Width / 2 + (x - xIntegralDelta) * xScale,
+                        Width / 2 + (x - integralDelta) * xScale,
                         Height / 2 - y * yScale,
-                        xIntegralDelta * xScale,
+                        integralDelta * xScale,
                         y * yScale
                         )
                     );
